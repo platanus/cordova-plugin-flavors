@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-flavors" version="0.0.1">
+
+    <name>Flavors</name>
+
+    <description>
+        This plugin allows you to create an app different app flavors.
+    </description>
+
+    <author>Juan Ignacio Donoso</author>
+
+    <license>MIT</license>
+
+    <keywords>cordova,flavors,alpha,beta,development,production</keywords>
+
+    <repo>https://github.com/platanus/cordova-plugin-flavors</repo>
+
+    <issue>https://github.com/platanus/cordova-plugin-flavors/issues</issue>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+</plugin>

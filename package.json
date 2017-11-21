@@ -1,0 +1,47 @@
+{
+  "name": "cordova-plugin-flavors",
+  "version": "0.0.1",
+  "description": "This plugin allows you to create an app different app flavors.",
+  "cordova": {
+    "id": "cordova-plugin-flavors",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platanus/cordova-plugin-flavors.git"
+  },
+  "keywords": [
+    "cordova",
+    "flavors",
+    "alpha",
+    "beta",
+    "variant",
+    "development",
+    "production",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "android",
+    "ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova-ios",
+      "version": ">=3.8"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=4"
+    }
+  ],
+  "dependencies": {},
+  "author": "Christian Cook",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/platanus/cordova-plugin-flavors/issues"
+  },
+  "homepage": "https://github.com/platanus/cordova-plugin-flavors#readme"
+}
