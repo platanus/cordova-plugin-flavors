@@ -11,11 +11,12 @@ function run(cordovaContext) {
 
   const plugin_path = cordovaContext.opts.plugin.dir;
   const cordova_splash = path.join(
-    plugin_path,
-    'node_modules',
-    '.bin',
-    'cordova-splash',
-  );
+      plugin_path,
+      'node_modules',
+      'cordova-splash',
+      'bin',
+      'cordova-splash'
+    );
 
   return execFile(cordova_splash, [`--splash=${input}`]).then(stats => {
     console.log(stats.stdout);
