@@ -17,6 +17,7 @@ cordova plugin add cordova-plugin-flavors
 ## Icon
 
 Icons will be generated using [app-icon](https://github.com/dwmkerr/app-icon) by @dwmkerr.
+To set up the source icon use the `ICON_INPUT` variable, it defaults to `resources/icon.png`
 
 The icon generation process is done in the `after_prepare` hook.
 
@@ -29,7 +30,8 @@ Just set the environmental variables `ICON_LABEL_TOP` and/or `ICON_LABEL_BOTTOM`
 
 ## Splash
 
-Splash screen will be generated using [app-icon](https://github.com/AlexDisler/cordova-splash) by @AlexDisler.
+Splash screen will be generated using [cordova-splash](https://github.com/AlexDisler/cordova-splash) by @AlexDisler.
+To set up the source icon use the `SPLASH_INPUT` variable, it defaults to `resources/splash.png`
 
 The splash generation process is done in the `after_prepare` hook.
 
