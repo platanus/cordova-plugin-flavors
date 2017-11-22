@@ -9,9 +9,7 @@ module.exports = function(ctx) {
 function run(cordovaContext) {
   const input = process.env['SPLASH_INPUT'] || 'resources/splash.png';
 
-  const plugin_path = cordovaContext.opts.plugin.dir;
   const cordova_splash = path.join(
-      plugin_path,
       'node_modules',
       'cordova-splash',
       'bin',
