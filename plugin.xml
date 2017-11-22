@@ -24,6 +24,7 @@
     </engines>
 
     <hook src="hooks/generateIcons.js" type="after_prepare"/>
+    <hook src="hooks/generateSplashs.js" type="after_prepare"/>
 
     <platform name="android">
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">

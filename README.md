@@ -4,6 +4,7 @@ Plugin to setup different flavors of the app.
 
 Features:
 - Icon generation for ios and android platforms with label support
+- Splash screen generation for ios and android
 
 ## Installation
 
@@ -25,6 +26,12 @@ When icons are generated you can choose to add a label on top and/or bottom of t
 different version of your app.
 
 Just set the environmental variables `ICON_LABEL_TOP` and/or `ICON_LABEL_BOTTOM` with the values you want in the labels
+
+## Splash
+
+Splash screen will be generated using [app-icon](https://github.com/AlexDisler/cordova-splash) by @AlexDisler.
+
+The splash generation process is done in the `after_prepare` hook.
 
 ## Contributing
 

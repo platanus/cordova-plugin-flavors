@@ -38,7 +38,8 @@
     }
   ],
   "dependencies": {
-    "app-icon": "^0.6.2"
+    "app-icon": "^0.6.2",
+    "cordova-splash": "^0.10.0"
   },
   "author": "Christian Cook",
   "license": "MIT",
