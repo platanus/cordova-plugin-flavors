@@ -37,7 +37,9 @@
       "version": ">=4"
     }
   ],
-  "dependencies": {},
+  "dependencies": {
+    "app-icon": "^0.6.2"
+  },
   "author": "Christian Cook",
   "license": "MIT",
   "bugs": {

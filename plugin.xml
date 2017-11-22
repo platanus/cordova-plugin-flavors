@@ -22,4 +22,12 @@
     <engines>
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
+
+    <hook src="hooks/generateIcons.js" type="after_prepare"/>
+
+    <platform name="android">
+        <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <activity android:icon="@mipmap/ic_launcher" />
+        </edit-config>
+    </platform>
 </plugin>
