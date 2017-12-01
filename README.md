@@ -45,12 +45,12 @@ The splash generation process is done in the `after_prepare` hook.
 
 ## Credits
 
-Thank you [contributors](https://github.com/platanus/parxer/graphs/contributors)!
+Thank you [contributors](https://github.com/platanus/cordova-plugin-flavors/graphs/contributors)!
 
 <img src="http://platan.us/gravatar_with_text.png" alt="Platanus" width="250"/>
 
-Parxer is maintained by [platanus](http://platan.us).
+Cordova Plugin Flavors is maintained by [platanus](http://platan.us).
 
 ## License
 
-Parxer is © 2017 platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
+Cordova Plugin Flavors is © 2017 platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
