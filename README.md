@@ -11,7 +11,7 @@ Features:
 Just install as any other plugin
 
 ```
-cordova plugin add cordova-plugin-flavors
+cordova plugin add cordova-plugin-flavors --save
 ```
 
 ## Icon
