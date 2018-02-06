@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- 'node'
+- '8'
+deploy:
+  provider: npm
+  email: contacto@platan.us
+  api_key:
+    secure: BCdDdq6O90c/e1Wg2RH0tjw+DgwKq1HNJ0R9DXpKPlbzAgviSzxAbL0+10fsbveHn2kqhDw4yeLNzO0SHLSGdq/ZPrwvY9RJH6fVVT8oRmvEmlFV3iu7rphsPsNux7rhanSbC/4LyHEHRXIOIyeUhIgQfzJiXABufCVGCD8UB2E3gghlv64QyjjT8+loSxmvRf/qX3GrgDieU9V8BKv4JvK3MAdN0mVnPgUxqo/vosh3o0OtnWnMQ0Jwhs4bFJfbot1N2RXQyHu7LuKfxnRvk8hfNIghZQ9fN6zIlBfZY8zJ/dcDinsj0Fbvz8sRnYfd/eZp2w15I8bDr48YyzNDM7p1fRpBUEWWhmTS19Hvh5yz4j8oOzHnhh0pT+REEnohU3bLbhrfyBNCwnFx7NQrERZ47MNGQLxrB6POOTa7g1HOXaW56ar3yy3NR8fUls2EbMgNx1dAx1yPREYcou1KU0QsxPEe5l3BhgmK3i1VepFdkmPGtWEd67LZhBKcl18or+mdvgeZCr4GqWl6c84dG2qQFD06Vy0iESrUEtVhsUMa4p86b6vHBVtg/6md87cLo4/1/CGVAVqiZ/tiqR5p3Z1+OumoHxykcGeYTAqz62EPT9RdIKMU2tXjSqAXORJ80iX6IUFj56gXowFv287j714GJjicjBHsOyOc0TDkoUU=
+  on:
+    tags: true
+    repo: platanus/cordova-plugin-flavors
