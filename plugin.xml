@@ -26,6 +26,6 @@
     <hook src="hooks/generateSplashs.js" type="after_prepare"/>
 
     <platform name="android">
-        <hook src="hooks/beforeBuild.js" type="before_build"/>
+        <hook src="hooks/changeIconName.js" type="after_prepare"/>
     </platform>
 </plugin>

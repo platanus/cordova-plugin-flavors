@@ -10,6 +10,7 @@ module.exports = function (ctx) {
 
 // based on https://stackoverflow.com/a/35128023
 function run(ctx) {
+  console.log('Updating AndroidManifest.xml with correct icon name');
   const manifestPath = path.join(ctx.opts.projectRoot, 'platforms/android/AndroidManifest.xml');
   const doc = xml.parseElementtreeSync(manifestPath);
   if (doc.getroot().tag !== 'manifest') {
