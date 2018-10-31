@@ -11,7 +11,13 @@ module.exports = function (ctx) {
 // based on https://stackoverflow.com/a/35128023
 function run(ctx) {
   console.log('Updating AndroidManifest.xml with correct icon name');
-  const manifestPath = path.join(ctx.opts.projectRoot, 'platforms/android/AndroidManifest.xml');
+  let manifestPath = path.join(ctx.opts.projectRoot, 'platforms/android/AndroidManifest.xml');
+
+  // If it doesn't exist try cordova-android@7 path
+  if (!fs.existsSync(manifestPath)) {
+    manifestPath = path.join(ctx.opts.projectRoot, 'platforms/android/app/src/main/AndroidManifest.xml');
+  }
+
   const doc = xml.parseElementtreeSync(manifestPath);
   if (doc.getroot().tag !== 'manifest') {
     throw new Error(`${manifestPath} has incorrect root node name (expected "manifest")`);
