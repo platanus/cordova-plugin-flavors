@@ -9,14 +9,7 @@ module.exports = function(ctx) {
 function run(cordovaContext) {
   const input = process.env['SPLASH_INPUT'] || 'resources/splash.png';
 
-  const cordova_splash = path.join(
-      'node_modules',
-      'cordova-splash',
-      'bin',
-      'cordova-splash'
-    );
-
-  return execFile(cordova_splash, [`--splash=${input}`]).then(stats => {
+  return execFile('npx', ['cordova-splash', `--splash=${input}`]).then(stats => {
     console.log(stats.stdout);
   });
 }
