@@ -40,7 +40,7 @@
   "dependencies": {
     "app-icon": "^0.6.2",
     "cordova-common": "^2.2.5",
-    "cordova-splash": "^0.10.0"
+    "cordova-splash": "1.0.0"
   },
   "author": "Christian Cook",
   "license": "MIT",
