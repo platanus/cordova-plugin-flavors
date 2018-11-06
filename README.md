@@ -14,7 +14,7 @@ Just install as any other plugin
 cordova plugin add cordova-plugin-flavors --save
 ```
 
-If your proyect uses an older version of cordova-android (>= 6.3.0)
+If your project uses an older version of cordova-android (>= 6.3.0)
 
 ```
 cordova plugin add cordova-plugin-flavors@0.0.6 --save
