@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-flavors",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "This plugin allows you to create an app different app flavors.",
   "cordova": {
     "id": "cordova-plugin-flavors",
