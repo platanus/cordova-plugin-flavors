@@ -2,7 +2,6 @@
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
-const isImagemagickInstalled = require('app-icon/src/imagemagick/is-imagemagick-installed');
 const labelImage = require('app-icon/src/label/label-image');
 const generate = require('app-icon/src/generate');
 
@@ -17,20 +16,11 @@ module.exports = function(ctx) {
 function run(cordovaContext) {
   const platforms = cordovaContext.opts.platforms;
 
-  return isImagemagickInstalled()
+  return checkPlatformIcons(platforms)
+    .then(generateLabels)
+    .then(generateIcons)
     .catch(err => {
       throw err;
-    })
-    .then(imageMagickInstalled => {
-      if (!imageMagickInstalled) {
-        console.error('  Error: ImageMagick must be installed. Try:');
-        console.error('    brew install imagemagick');
-        return process.exit(1);
-      }
-
-      return checkPlatformIcons(platforms)
-        .then(generateLabels)
-        .then(generateIcons)
     });
 }
 
