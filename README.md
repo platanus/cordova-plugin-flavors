@@ -28,6 +28,12 @@ To set up the source icon use the `ICON_INPUT` variable, it defaults to `resourc
 
 The icon generation process is done in the `after_prepare` hook.
 
+### Adaptive Icons
+
+To generate Adaptive Icons just place `ic_launcher_background.png` and `ic_launcher.png` in `resources/android/`. Keep in mind that you might change the path to icon resources using the environment variables `ICON_BACKGROUND_INPUT` and `ICON_FOREGROUND_INPUT` respectively.
+
+**Note**: Adaptive icons are supported by Android 8.0+ (API level 26 or greater).
+
 ### Icon labels
 
 When icons are generated you can choose to add a label on top and/or bottom of the icon to identify
