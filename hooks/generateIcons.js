@@ -7,7 +7,9 @@ const generate = require('app-icon/src/generate');
 
 const LABEL_TOP = process.env['ICON_LABEL_TOP'] || '';
 const LABEL_BOTTOM = process.env['ICON_LABEL_BOTTOM'] || '';
-const DEFAULT_ICON_PATH = process.env['ICON_INPUT'] || 'resources/icon.png';
+const DEFAULT_ICON_PATH = process.env['ICON_INPUT'] || 'resources/icon.png'; 
+const ADAPTIVE_ICON_BACKGROUND_PATH = process.env['ICON_BACKGROUND_INPUT'] || 'resources/android/ic_launcher_background.png';
+const ADAPTIVE_ICON_FOREGROUND_PATH = process.env['ICON_FOREGROUND_INPUT'] || 'resources/android/ic_launcher.png';
 
 module.exports = function(ctx) {
   return run(ctx);
@@ -70,6 +72,17 @@ function generateLabels(icons) {
 
 function generateIcons(icons) {
   const search = '';
-
-  return Promise.all(Object.keys(icons).map(platform => generate({ sourceIcon: icons[platform], search, platforms: platform })));
+  if (fs.existsSync(ADAPTIVE_ICON_BACKGROUND_PATH) && fs.existsSync(ADAPTIVE_ICON_FOREGROUND_PATH)) {
+    return Promise.all(Object.keys(icons).map(platform => generate({
+      sourceIcon: icons[platform],
+      backgroundIcon: ADAPTIVE_ICON_BACKGROUND_PATH,
+      foregroundIcon: ADAPTIVE_ICON_FOREGROUND_PATH,
+      search,
+      platforms: platform,
+      adaptiveIcons: true
+    })));
+  } else {
+    console.log('No adaptive icons found. Creating legacy icons.');
+    return Promise.all(Object.keys(icons).map(platform => generate({ sourceIcon: icons[platform], search, platforms: platform })));
+  }
 }
