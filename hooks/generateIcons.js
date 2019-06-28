@@ -11,6 +11,8 @@ const DEFAULT_ICON_PATH = process.env['ICON_INPUT'] || 'resources/icon.png';
 const ADAPTIVE_ICON_BACKGROUND_PATH = process.env['ICON_BACKGROUND_INPUT'] || 'resources/android/ic_launcher_background.png';
 const ADAPTIVE_ICON_FOREGROUND_PATH = process.env['ICON_FOREGROUND_INPUT'] || 'resources/android/ic_launcher.png';
 
+const useAdaptiveIcons = fs.existsSync(ADAPTIVE_ICON_BACKGROUND_PATH) && fs.existsSync(ADAPTIVE_ICON_FOREGROUND_PATH);
+
 module.exports = function(ctx) {
   return run(ctx);
 };
@@ -32,12 +34,16 @@ function checkPlatformIcons(platforms) {
 
 function checkPlatformIcon(platform) {
   const platformFolderName = platform.toLowerCase();
-  const platformIconPath = `resources/${platformFolderName}/icon.png`;
+  let platformIconPath = `resources/${platformFolderName}/icon.png`;
+
+  if (platformFolderName == 'android' && useAdaptiveIcons) {
+    platformIconPath = ADAPTIVE_ICON_FOREGROUND_PATH;
+  }
 
   return new Promise((resolve) => {
     fs.exists(platformIconPath, (exists) => {
       const finalIconPath = (exists) ?
-        `resources/${platformFolderName}/icon.png` :
+        platformIconPath :
         DEFAULT_ICON_PATH;
       resolve({ platform: platformFolderName, iconPath: finalIconPath });
     });
@@ -72,11 +78,11 @@ function generateLabels(icons) {
 
 function generateIcons(icons) {
   const search = '';
-  if (fs.existsSync(ADAPTIVE_ICON_BACKGROUND_PATH) && fs.existsSync(ADAPTIVE_ICON_FOREGROUND_PATH)) {
+  if (useAdaptiveIcons) {
     return Promise.all(Object.keys(icons).map(platform => generate({
       sourceIcon: icons[platform],
       backgroundIcon: ADAPTIVE_ICON_BACKGROUND_PATH,
-      foregroundIcon: ADAPTIVE_ICON_FOREGROUND_PATH,
+      foregroundIcon: icons[platform],
       search,
       platforms: platform,
       adaptiveIcons: true
