@@ -2,7 +2,9 @@
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
-const labelImage = require('app-icon/src/label/label-image');
+
+const im = require('imagemagick');
+
 const generate = require('app-icon/src/generate');
 
 const LABEL_TOP = process.env['ICON_LABEL_TOP'] || '';
@@ -21,11 +23,27 @@ function run(cordovaContext) {
   const platforms = cordovaContext.opts.platforms;
 
   return checkPlatformIcons(platforms)
+    .then(getDimentions)
     .then(generateLabels)
     .then(generateIcons)
     .catch(err => {
       throw err;
     });
+}
+
+function getDimentions(icons) {
+  return Promise.all(icons.map(getDimention))
+}
+
+function getDimention(icon) {
+  return new Promise((resolve) => {
+    im.identify(icon.iconPath, (err, features) => {
+      if (err) throw err;
+      icon.width = features.width;
+      icon.height = features.height;
+      resolve(icon);
+    });
+  }) 
 }
 
 function checkPlatformIcons(platforms) {
@@ -55,14 +73,22 @@ function generateLabels(icons) {
 
   return Promise.all(
     icons.map(
-      ({ platform, iconPath }) => {
+      ({ platform, iconPath, width, height }) => {
         const outputIcon = `${output}-${platform}.png`;
 
         return new Promise((resolve, reject) => {
           if (!LABEL_TOP && !LABEL_BOTTOM) return resolve({ platform, iconPath });
-          labelImage(iconPath, outputIcon, LABEL_TOP, LABEL_BOTTOM).then(() => {
-            return resolve({ platform, iconPath: outputIcon });
-          });
+          let wOffset = parseInt(parseInt(width, 10) * 0.20);
+          let labelHOffset = parseInt(parseInt(height, 10) * 0.4);
+          let labelH = parseInt(parseInt(height, 10) * 0.2); 
+          im.convert([
+              iconPath,
+              '-size', `${width}x${labelH}!`, '-background', '#000000bb', '-fill', 'white',
+              `caption:  ${LABEL_BOTTOM}`, '-geometry', `+${wOffset}+${labelHOffset}`, '-composite', outputIcon
+            ], (err, stout) => {
+              if (err) throw err;
+              return resolve({ platform, iconPath: outputIcon });
+            })
         });
       }
     ),
