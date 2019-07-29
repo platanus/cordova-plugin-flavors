@@ -78,12 +78,12 @@ function generateLabels(icons) {
 
         return new Promise((resolve, reject) => {
           if (!LABEL_TOP && !LABEL_BOTTOM) return resolve({ platform, iconPath });
-          let wOffset = parseInt(parseInt(width, 10) * 0.20);
-          let labelHOffset = parseInt(parseInt(height, 10) * 0.4);
+          let wOffset = parseInt(parseInt(width, 10) * 0.35);
+          let labelHOffset = parseInt(parseInt(height, 10) * 0.55);
           let labelH = parseInt(parseInt(height, 10) * 0.2); 
           im.convert([
               iconPath,
-              '-size', `${width}x${labelH}!`, '-background', '#000000bb', '-fill', 'white',
+              '-size', `${width - wOffset}x${labelH}!`, '-background', '#000000bb', '-fill', 'white',
               `caption:  ${LABEL_BOTTOM}`, '-geometry', `+${wOffset}+${labelHOffset}`, '-composite', outputIcon
             ], (err, stout) => {
               if (err) throw err;
